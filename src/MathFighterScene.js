@@ -140,6 +140,7 @@ export default class MathFighterScene extends Phaser.Scene{
         this.enemy.anims.play('enemy-standby', true);
         this.resultText = this.add.text(this.gameHalfWidth, 200, '0', { fontSize: '32px', fill: "#000000" });
         this.questionText = this.add.text(this.gameHalfWidth, 100, '0', { fontSize: '32px', fill: "#000000" });
+        this.generateQuestion();
     }
 
     createButtons(){
@@ -225,6 +226,10 @@ export default class MathFighterScene extends Phaser.Scene{
                 this.question[1] = num1 - num2;
             }
         }
+
+        this.questionText.setText(this.question[0]);
+        const textHalfWidth = this.questionText.width * 0.5;
+        this.questionText.setX(this.gameHalfWidth - textHalfWidth)
     }
 
     checkAnswer(){
